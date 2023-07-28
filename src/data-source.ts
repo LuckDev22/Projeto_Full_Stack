@@ -30,6 +30,6 @@ const settings = (): DataSourceOptions => {
   };
 };
 
-const AppDataSource = new DataSource(settings());
+const AppDataSource: DataSource = new DataSource(settings());
 
 export { AppDataSource };
