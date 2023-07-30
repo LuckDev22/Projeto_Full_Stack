@@ -7,7 +7,7 @@ import {
 } from "typeorm";
 import { Client } from "./client.entitie";
 
-@Entity()
+@Entity("contacts")
 export class Contact {
     @PrimaryGeneratedColumn()
     id: number;
@@ -24,6 +24,6 @@ export class Contact {
     @CreateDateColumn({ type: "date" })
     registrationDate?: string | Date;
 
-    @ManyToOne(() => Client, (client) => client.contacts)
+    @ManyToOne(() => Client, client => client.contacts)
     client: Client;
 }

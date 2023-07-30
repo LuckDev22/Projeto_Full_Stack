@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createClientService } from "../../services/clients/createClientService";
+import { createClientService } from "../../services/clients/createClient.service";
 
 export const createClientController = async (req: Request, resp: Response): Promise<Response> => {
     const clientData = req.body
