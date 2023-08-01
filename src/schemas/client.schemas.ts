@@ -23,6 +23,8 @@ export const clientSchemaResponse = clientSchema.omit({
     password: true,
 });
 
+export const clientsSchemaResponse = z.array(clientSchemaResponse);
+
 export const clientSchemaUpdate = clientSchemaRequest
     .omit({ admin: true, password: true })
     .partial();

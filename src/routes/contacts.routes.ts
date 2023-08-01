@@ -4,16 +4,9 @@ import { deleteContactController } from "../controllers/contact/deleteContact.co
 import { listContactController } from "../controllers/contact/listContact.controller";
 import { updateContactController } from "../controllers/contact/updateContact.controller";
 
+export const contactRoutes = Router();
 
-
-export const contactRoutes = Router()
-
-contactRoutes.post("", createContactController)
-
-
-
-contactRoutes.get("", listContactController)
-contactRoutes.patch("/:id",  updateContactController)
-contactRoutes.delete("/:id", deleteContactController)
-
-// ensureAuthMiddleware, ensureIsOwnerMiddleware,
+contactRoutes.post("", createContactController);
+contactRoutes.get("", listContactController);
+contactRoutes.patch("/:id", updateContactController);
+contactRoutes.delete("/:id", deleteContactController);
