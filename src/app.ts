@@ -2,7 +2,7 @@ import "reflect-metadata";
 import "express-async-errors";
 import express, { Application, json } from "express";
 import { handleErrors } from "./error";
-import { clientRoutes } from "./routes/client.routes";
+import { clientRoutes } from "./routes/clients.routes";
 import { loginRoutes } from "./routes/login.routes";
 
 

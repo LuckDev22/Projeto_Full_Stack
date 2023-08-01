@@ -1,14 +1,38 @@
-import { Repository } from "typeorm"
-import { AppDataSource } from "../../data-source"
-import { Contact } from "../../entities/contact.entitie"
+import { Repository } from "typeorm";
+import { AppDataSource } from "../../data-source";
+import { Contact } from "../../entities/contact.entitie";
+import {
+    TContactRequest,
+    TContactResponse,
+} from "../../interfaces/contact.interfaces";
+import { Client } from "../../entities/client.entitie";
+import { AppError } from "../../error";
+import { contactSchema } from "../../schemas/contact.schemas";
 
+export const createContactService = async (
+    contactData: TContactRequest,
+    clientId: number
+): Promise<TContactResponse> => {
+    const contactRepository: Repository<Contact> =
+        AppDataSource.getRepository(Contact);
+    const clientRepository = AppDataSource.getRepository(Client);
 
+    const client = await clientRepository.findOne({
+        where: {
+            id: clientId,
+        },
+    });
 
-export const createContactService = async (contactData: TContact):Promise<any> => {
-    const contactRepository: Repository<Contact> = AppDataSource.getRepository(Contact)
+    if (!client) {
+        throw new AppError("client not found", 404);
+    }
 
-    const contact: Contact = contactRepository.create(contactData)
-    await contactRepository.save(contact)
+    const contact = contactRepository.create({
+        ...contactData,
+        client,
+    });
 
-    return contact
-}
+    await contactRepository.save(contact);
+
+    return contactSchema.parse(contact);
+};
