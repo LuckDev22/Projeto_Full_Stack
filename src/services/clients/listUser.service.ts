@@ -4,7 +4,7 @@ import { User } from "../../entities";
 import { AppDataSource } from "../../data-source";
 import { usersSchemaResponse } from "../../schemas/users.schemas";
 
-export const readUserService = async (): Promise<TUsersResponse> => {
+export const listUserService = async (): Promise<TUsersResponse> => {
     const userRepository: Repository<User> = AppDataSource.getRepository(User);
     const users: User[] = await userRepository.find();
     const returnUsers: TUsersResponse = usersSchemaResponse.parse(users);

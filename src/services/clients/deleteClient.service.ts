@@ -2,7 +2,7 @@ import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import { Client } from "../../entities/client.entitie";
 
-export const destroyClientService = async (clientId: number): Promise<void> => {
+export const deleteClientService = async (clientId: number): Promise<void> => {
     const clientRepository: Repository<Client> =
         AppDataSource.getRepository(Client);
 

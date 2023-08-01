@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import { destroyClientService } from "../clients/destroyClient.service";
+import { deleteClientService } from "../../services/clients/deleteClient.service";
 
-export const destroyClientController = async (
+export const deleteClientController = async (
     req: Request,
     res: Response
 ): Promise<Response> => {
     const clientId: number = Number(req.params.id);
 
-    await destroyClientService(clientId);
+    await deleteClientService(clientId);
     return res.status(204).send();
 };
