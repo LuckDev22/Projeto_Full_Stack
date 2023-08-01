@@ -17,4 +17,4 @@ export const contactSchemaRequest = contactSchema.omit({
 
 export const contactSchemaUpdate = contactSchema.omit({ id: true }).partial();
 
-export const contactSchemaResponse = z.array(contactSchema);
+export const contactsSchemaResponse = z.array(contactSchema);
