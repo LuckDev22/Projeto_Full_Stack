@@ -1,27 +1,30 @@
 import { NextFunction, Request, Response } from "express";
 import { Repository } from "typeorm";
-import { AppError } from "../error";
 import { AppDataSource } from "../data-source";
+import { AppError } from "../error";
 import { Client } from "../entities/client.entitie";
 
-export const checkedIdExisting = async (
+export const checkedEmailExistingMiddleware = async (
     req: Request,
     resp: Response,
     next: NextFunction
-): Promise<Response | void> => {
-    const clientId: number = Number(req.params.id);
+): Promise<void | Response> => {
+    const emailValid = req.body.email;
 
     const clientRepository: Repository<Client> =
         AppDataSource.getRepository(Client);
 
-    const client = await clientRepository.findOne({
-        where: {
-            id: clientId,
-        },
+    const client = await clientRepository.findOneBy({
+        email: emailValid,
     });
 
-    if (!client) {
-        throw new AppError("Client not found", 404);
+    if (client === undefined) {
+        return next();
     }
+
+    if (client) {
+        throw new AppError("Email already exists", 409);
+    }
+
     return next();
 };
