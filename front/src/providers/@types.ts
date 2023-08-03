@@ -21,9 +21,9 @@ export interface IUserContextValues {
     loading: boolean;
     setLoading: React.Dispatch<React.SetStateAction<boolean>>;
     user: IUser | null;
-    // userRegister: (formData: IUserRegisterFormValues) => Promise<void>;
     userLogin: (formData: IUserLoginFormValues) => Promise<void>;
-    // userLogout: () => void;
+    userLogout: () => void;
+    // userRegister: (formData: IUserRegisterFormValues) => Promise<void>;
 }
 
 // export interface IUserRegisterFormValues {
@@ -33,26 +33,3 @@ export interface IUserContextValues {
 //   confirmPassword: string;
 // }
 
-// export interface IProducts {
-//   id: number;
-//   name: string;
-//   category: string;
-//   price: number;
-//   img: string;
-//   qty?: number;
-// }
-
-// export interface IHomeContext {
-//   products: IProducts[];
-//   setProducts: React.Dispatch<React.SetStateAction<IProducts[]>>;
-//   cartModal: boolean;
-//   setCartModal: React.Dispatch<React.SetStateAction<boolean>>;
-//   filterProduct: IProducts[];
-//   setFilterCard: React.Dispatch<React.SetStateAction<string>>;
-//   addItenCart: (product: IProducts) => void;
-//   delItenCart: (itemId: number) => void;
-//   currentSale: IProducts[];
-//   fullValue: number;
-//   delAllCart: () => void;
-//   filterCard: string;
-// }

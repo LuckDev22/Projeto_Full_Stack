@@ -45,6 +45,12 @@ export const UserProvider = ({ children }: IDefaultProvidersProps) => {
         }
     };
 
+    const userLogout = () => {
+        setUser(null);
+        navigate("/");
+        localStorage.removeItem("@TOKEN");
+    };
+
     return (
         <UserContext.Provider
             value={{
@@ -52,6 +58,7 @@ export const UserProvider = ({ children }: IDefaultProvidersProps) => {
                 setLoading,
                 userLogin,
                 user,
+                userLogout,
             }}
         >
             {children}
