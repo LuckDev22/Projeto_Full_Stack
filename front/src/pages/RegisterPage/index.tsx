@@ -1,5 +1,13 @@
+import { RegisterForm } from "../../components/Form/RegisterForm";
+import { StyledRegisterPage } from "./style";
+
 export const RegisterPage = () => (
-    <div>
-        <h1>register page</h1>
-    </div>
+    <StyledRegisterPage>
+        <div>
+            <h1>register page</h1>
+        </div>
+        <div>
+            <RegisterForm />
+        </div>
+    </StyledRegisterPage>
 );

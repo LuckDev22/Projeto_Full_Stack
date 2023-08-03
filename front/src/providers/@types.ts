@@ -23,13 +23,13 @@ export interface IUserContextValues {
     user: IUser | null;
     userLogin: (formData: IUserLoginFormValues) => Promise<void>;
     userLogout: () => void;
-    // userRegister: (formData: IUserRegisterFormValues) => Promise<void>;
+    userRegister: (formData: IUserRegisterFormValues) => Promise<void>;
 }
 
-// export interface IUserRegisterFormValues {
-//   email: string;
-//   password: string;
-//   name: string;
-//   confirmPassword: string;
-// }
-
+export interface IUserRegisterFormValues {
+    name: string;
+    email: string;
+    telefone: number;
+    password: string;
+    confirmPassword: string;
+}

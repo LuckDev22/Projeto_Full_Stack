@@ -1,11 +1,11 @@
 import { MdLogout } from "react-icons/md";
 import { StyledHeader } from "./style";
 import { StyledContainer } from "../../styles/grid";
-// import { useContext } from "react";
-// import { UserContext } from "../../providers/UserProvider";MdShoppingCart
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserProvider";
 
-const Header = () => {
-    // const { userLogout } = useContext(UserContext);
+export const Header = () => {
+    const { userLogout } = useContext(UserContext);
 
     return (
         <StyledHeader>
@@ -24,5 +24,3 @@ const Header = () => {
         </StyledHeader>
     );
 };
-
-export default Header;

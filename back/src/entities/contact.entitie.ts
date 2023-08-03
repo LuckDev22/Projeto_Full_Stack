@@ -13,7 +13,7 @@ export class Contact {
     id: number;
 
     @Column()
-    nome: string;
+    name: string;
 
     @Column()
     email: string;
@@ -24,6 +24,6 @@ export class Contact {
     @CreateDateColumn({ type: "date" })
     registrationDate?: string | Date;
 
-    @ManyToOne(() => Client, client => client.contacts)
+    @ManyToOne(() => Client, (client) => client.contacts)
     client: Client;
 }

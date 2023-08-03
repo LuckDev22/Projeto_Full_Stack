@@ -4,6 +4,7 @@ import {
     IUser,
     IUserContextValues,
     IUserLoginFormValues,
+    IUserRegisterFormValues,
 } from "./@types";
 import { useNavigate } from "react-router-dom";
 import { api } from "../services/api";
@@ -24,7 +25,7 @@ export const UserProvider = ({ children }: IDefaultProvidersProps) => {
             return navigate("/dashboard");
         }
         localStorage.removeItem("@TOKEN");
-        return navigate("/");
+        // return navigate("/");
     }, []);
 
     const userLogin = async (formData: IUserLoginFormValues) => {
@@ -45,6 +46,31 @@ export const UserProvider = ({ children }: IDefaultProvidersProps) => {
         }
     };
 
+    const userRegister = async (formData: IUserRegisterFormValues) => {
+        try {
+            setLoading(true);
+            console.log(formData);
+            const response = await api.post("/client", formData);
+            setUser(response.data);
+            const message = response.data.message;
+
+            console.log(message);
+            localStorage.setItem("@TOKEN", response.data.accessToken);
+            toast.success(
+                `Usuario ${response.data.user.name}, cadastrado com sucesso!`
+            );
+            navigate("/");
+        } catch (error: any) {
+            const errorMessage: string =
+                error.response?.data?.message ??
+                toast.error("Usuario não cadastrado!");
+
+            toast.error(`${errorMessage}!`);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     const userLogout = () => {
         setUser(null);
         navigate("/");
@@ -58,6 +84,7 @@ export const UserProvider = ({ children }: IDefaultProvidersProps) => {
                 setLoading,
                 userLogin,
                 user,
+                userRegister,
                 userLogout,
             }}
         >
