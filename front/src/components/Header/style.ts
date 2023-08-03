@@ -1,48 +1,43 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledHeader = styled.header`
-  background: ${({ theme }) => theme.colors.gray0};
-  .flexGrid {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 20px;
-
-    .logo {
-      max-width: 160px;
-    }
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-
-      .buttons {
+    .flexGrid {
         display: flex;
         align-items: center;
-        justify-content: center;
-        gap: 15px;
+        justify-content: space-between;
 
-        button {
-          background: transparent;
-          color: ${({ theme }) => theme.colors.gray150};
-          transition: 0.3s;
+        gap: 20px;
 
-          :hover {
-            color: ${({ theme }) => theme.colors.gray300};
-          }
+        .logo {
+            max-width: 160px;
         }
-      }
-    }
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
 
-    @media (max-width: 600px) {
-      flex-direction: column;
-    }
+            .buttons {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 15px;
 
-    @media (max-width: 450px) {
-      .nav {
-        flex-direction: column;
-      }
+                button {
+                    background: transparent;
+
+                    transition: 0.3s;
+                }
+            }
+        }
+
+        @media (max-width: 600px) {
+            flex-direction: column;
+        }
+
+        @media (max-width: 450px) {
+            .nav {
+                flex-direction: column;
+            }
+        }
     }
-  }
 `;
