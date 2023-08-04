@@ -21,8 +21,25 @@ export const GlobalStyles = createGlobalStyle`
 
 
 body{
-    background-color: var(--grey-4);
-    color: var(--grey-0);
+    background-color: var(--grey-0);
+    color: var(--grey-4);
+    }
+
+    *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+    list-style: none;
+    text-decoration: none;
+    }
+    button{
+        cursor: pointer;
+    }
+
+    dialog{
+        display: unset;
+        position: unset;
     }
 }
 `;

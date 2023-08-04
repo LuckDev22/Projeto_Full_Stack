@@ -7,14 +7,14 @@ export const clientSchema = z.object({
     telefone: z.string(),
     password: z.string().min(4),
     admin: z.boolean().optional().default(false),
-    registrationDate: z.string().optional(),
+    registrationDate: z.string(),
     updatedAt: z.string(),
     deletedAt: z.string().nullish(),
 });
 
 export const clientSchemaRequest = clientSchema.omit({
     id: true,
-    createdAt: true,
+    registrationDate: true,
     updatedAt: true,
     deletedAt: true,
 });

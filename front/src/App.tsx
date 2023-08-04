@@ -1,8 +1,8 @@
 import { ToastContainer } from "react-toastify";
 import { UserProvider } from "./providers/UserProvider";
 import { AppRoutes } from "./routes/routes";
-import { GlobalStyles } from "./styles/global";
 import "react-toastify/dist/ReactToastify.css";
+import { GlobalStyles } from "./styles/globalStyles";
 
 export const App = () => {
     return (
