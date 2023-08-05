@@ -33,3 +33,11 @@ export interface IUserRegisterFormValues {
     password: string;
     confirmPassword: string;
 }
+
+
+export interface Contact {
+    id: string,
+    status: string,
+    description: string,
+    title: string
+}
