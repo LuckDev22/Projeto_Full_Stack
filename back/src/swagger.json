@@ -1,0 +1,18 @@
+{
+  "openapi":"3.0.0",
+  "info": {
+    "title": "API de criação de clientes e contatos",
+    "description": "APi desenvovida por Lucas Macedo Ribeiro para adicionar clientes num banco de dados e cadastrar os seus contatos",
+    "termsOfService": "http://localhost:3000/terms",
+    "contact": {
+      "email": "lukki12@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/",
+      "description": "Api de Prdução fase inicial"
+    }
+  ]
+}

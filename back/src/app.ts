@@ -5,6 +5,8 @@ import { handleErrors } from "./error";
 import { clientRoutes } from "./routes/clients.routes";
 import { loginRoutes } from "./routes/login.routes";
 import cors from "cors";
+import swaggerUi from "swagger-ui-express";
+import swaggerDocs from "./swagger.json";
 
 export const app: Application = express();
 app.use(json());
@@ -15,4 +17,5 @@ app.use(
 );
 app.use("/client", clientRoutes);
 app.use("/login", loginRoutes);
+app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use(handleErrors);
