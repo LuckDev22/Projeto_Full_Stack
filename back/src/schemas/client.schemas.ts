@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const clientSchema = z.object({
     id: z.number(),
-    nome: z.string().max(140),
+    name: z.string().max(140),
     email: z.string().email(),
     telefone: z.string(),
     password: z.string().min(4),
@@ -14,7 +14,7 @@ export const clientSchema = z.object({
 
 export const clientSchemaRequest = clientSchema.omit({
     id: true,
-    createdAt: true,
+    registrationDate: true,
     updatedAt: true,
     deletedAt: true,
 });

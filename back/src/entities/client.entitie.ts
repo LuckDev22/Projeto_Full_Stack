@@ -18,7 +18,7 @@ export class Client {
     id: number;
 
     @Column({ type: "varchar", length: 140 })
-    nome: string;
+    name: string;
 
     @Column({ type: "varchar", length: 45, unique: true })
     email: string;
