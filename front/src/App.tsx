@@ -3,6 +3,7 @@ import { UserProvider } from "./providers/UserProvider";
 import { AppRoutes } from "./routes/routes";
 import "react-toastify/dist/ReactToastify.css";
 import { GlobalStyles } from "./styles/globalStyles";
+import { HomeProvider } from "./providers/HomeProvider";
 
 export const App = () => {
     return (
@@ -20,9 +21,11 @@ export const App = () => {
                 theme="light"
             />
             <GlobalStyles />
-            <UserProvider>
-                <AppRoutes />
-            </UserProvider>
+            <HomeProvider>
+                <UserProvider>
+                    <AppRoutes />
+                </UserProvider>
+            </HomeProvider>
         </>
     );
 };

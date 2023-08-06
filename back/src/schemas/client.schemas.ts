@@ -21,6 +21,7 @@ export const clientSchemaRequest = clientSchema.omit({
 
 export const clientSchemaResponse = clientSchema.omit({
     password: true,
+    deletedAt: true,
 });
 
 export const clientsSchemaResponse = z.array(clientSchemaResponse);

@@ -34,10 +34,15 @@ export interface IUserRegisterFormValues {
     confirmPassword: string;
 }
 
+export interface IHomeContextValues {
+    contacts: IContact[];
+    createContact: (contactData: IContact) => Promise<void>;
+}
 
-export interface Contact {
-    id: string,
-    status: string,
-    description: string,
-    title: string
+export interface IContact {
+    id: string;
+    name: string;
+    email: string;
+    telefone: string;
+    registrationDate: string;
 }

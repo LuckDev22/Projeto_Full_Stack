@@ -7,9 +7,14 @@ import { compare } from "bcryptjs";
 import jwt from "jsonwebtoken";
 import "dotenv/config";
 
+export interface IloginResponse {
+    token: string;
+    client: Client;
+}
+
 export const createLoginService = async (
     loginData: TLoginReq
-): Promise<string> => {
+): Promise<IloginResponse> => {
     const clientRepository: Repository<Client> =
         AppDataSource.getRepository(Client);
 
@@ -44,5 +49,9 @@ export const createLoginService = async (
         }
     );
 
-    return token;
+    const loginResponse: IloginResponse = {
+        token,
+        client,
+    };
+    return loginResponse;
 };

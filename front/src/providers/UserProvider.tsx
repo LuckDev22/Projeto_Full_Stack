@@ -33,12 +33,14 @@ export const UserProvider = ({ children }: IDefaultProvidersProps) => {
             setLoading(true);
             const response = await api.post("/login", formData);
             const { token } = response.data;
+            const { client } = response.data;
+
             localStorage.setItem("@TOKEN", token);
+            localStorage.setItem("@CLIENT", JSON.stringify(client));
             api.defaults.headers.common.Authorization = `Bearer ${token}`;
             navigate("/dashboard");
-            console.log(response.data);
             setUser(response.data);
-            toast.success(`${response.data.user.name}, Bem Vindo ! `);
+            toast.success(`${response.data.client.name}, Bem Vindo ! `);
         } catch (error) {
             toast.error("Usuario ou senha invalido!");
         } finally {
@@ -71,12 +73,14 @@ export const UserProvider = ({ children }: IDefaultProvidersProps) => {
         }
     };
 
+
     const userLogout = () => {
         setUser(null);
         navigate("/");
         localStorage.removeItem("@TOKEN");
     };
 
+    
     return (
         <UserContext.Provider
             value={{

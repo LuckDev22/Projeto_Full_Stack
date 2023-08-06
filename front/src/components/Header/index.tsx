@@ -16,7 +16,7 @@ export const Header = () => {
                         <div />
                         <ul>
                             <li>
-                                <Link to="/contacts">My Contacts</Link>
+                                <Link to="/dashboard">My Contacts</Link>
                             </li>
                             <li>
                                 <Link to="/update">Update Profile</Link>

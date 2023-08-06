@@ -18,7 +18,7 @@ export class Contact {
     @Column()
     email: string;
 
-    @Column()
+    @Column({ type: "varchar", length: 16, unique: true })
     telefone: string;
 
     @CreateDateColumn({ type: "date" })

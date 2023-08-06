@@ -12,6 +12,7 @@ export const contactSchemaRequest = contactSchema.omit({
     id: true,
     createdAt: true,
     updatedAt: true,
+    registrationDate: true,
     deletedAt: true,
 });
 

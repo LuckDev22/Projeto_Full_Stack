@@ -18,7 +18,7 @@ export const checkedEmailExistingMiddleware = async (
         email: emailValid,
     });
 
-    if (client === undefined) {
+    if (client === undefined || null) {
         return next();
     }
 
