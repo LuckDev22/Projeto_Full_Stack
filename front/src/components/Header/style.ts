@@ -8,13 +8,41 @@ export const StyledHeader = styled.header`
 
         gap: 20px;
 
-        .logo {
-            max-width: 160px;
+        .userContainer {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        h2 {
+            color: var(--color-primary)
+        }
+        a {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0 20px;
+            height: 60px;
+            :hover {
+                opacity: 0.5;
+            }
         }
         .nav {
             display: flex;
             align-items: center;
             gap: 20px;
+
+            ul {
+                display: flex;
+                align-items: center;
+            }
+
+            li {
+                margin-right: 20px;
+            }
 
             .buttons {
                 display: flex;

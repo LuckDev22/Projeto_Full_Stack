@@ -6,6 +6,7 @@ export interface IUser {
     id: number;
     name: string;
     email: string;
+    telefone: string;
 }
 
 export interface IUserLoginFormValues {
@@ -32,6 +33,16 @@ export interface IUserRegisterFormValues {
     telefone: number;
     password: string;
     confirmPassword: string;
+}
+
+export interface IUserResponse {
+    id: number;
+    name: string;
+    email: string;
+    telefone: number;
+    admin: boolean;
+    registrationDate: string;
+    updatedAt: string;
 }
 
 export interface IHomeContextValues {

@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 import { IContact, IDefaultProvidersProps, IHomeContextValues } from "./@types";
 import { toast } from "react-toastify";
@@ -7,7 +7,7 @@ export const HomeContext = createContext({} as IHomeContextValues);
 
 export const HomeProvider = ({ children }: IDefaultProvidersProps) => {
     const [contacts, setContacts] = useState<IContact[]>([]);
-    console.log(contacts);
+
     useEffect(() => {
         (async () => {
             const response = await api.get<IContact[]>("/contact");

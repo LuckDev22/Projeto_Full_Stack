@@ -1,5 +1,5 @@
 import { LoginForm } from "../../components/Form/LoginForm";
-import { StyledContainer } from "../../styles/grid";
+import { StyledContainer, StyledGridBox } from "../../styles/grid";
 import { StyledLoginPage } from "./style";
 import { Link } from "react-router-dom";
 
@@ -8,10 +8,12 @@ export const LoginPage = () => (
         <StyledContainer>
             <div className="flexGrid">
                 <div className="left">
-                    <h2>Login</h2>
-                    <LoginForm />
-                    <p>Crie sua conta gratis!!</p>
-                    <Link to="/register">Cadastrar</Link>
+                    <StyledGridBox className="formBox">
+                        <h2>Login</h2>
+                        <LoginForm />
+                        <p>Crie sua conta gratis!!</p>
+                        <Link to="/register">Cadastrar</Link>
+                    </StyledGridBox>
                 </div>
                 <div className="right">
                     <h2>

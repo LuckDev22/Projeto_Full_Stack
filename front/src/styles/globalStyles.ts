@@ -1,26 +1,44 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
-:root{
-    --color-primary:            #FF577F;
-    --color-primary-focus:      #FF427F;
-    --color-primary-negative:   #59323F;
-    --color-secondary:          #EB5757;
 
-    --grey-0:                   #F8F9FA;
-    --grey-1:                   #868E96;
-    --grey-2:                   #343B41;
-    --grey-3:                   #212529;
-    --grey-4:                   #121214;
-    --grey-50:                  #828282;
+:root {
+    --color-primary:            #4D6FFF;
+    --color-primary-focus:      #2E4DFF;
+    --color-primary-negative:   #1C2A3FFF;
+    --color-secondary:          #6B8FFF;
+
+    --grey-0:                   #F0F2F5;
+    --grey-1:                   #AEB5C3;
+    --grey-2:                   #8795A1;
+    --grey-3:                   #606F7B;
+    --grey-4:                   #394954;
+    --grey-50:                  #7E8A97;
     --grey-100:                 #333333;
     --color-white:              #ffffff;
 
-    --sucess:                   #3FE864;
-    --negative:                 #E83F5B;
+    --success:                  #38A169;
+    --negative:                 #E53E3E;
 
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: none;
+        list-style: none;
+        text-decoration: none;
+    }
 
-body{
+    button{
+        cursor: pointer;
+    }
+
+    dialog{
+        display: unset;
+        position: unset;
+    }
+
+    body{
     background-color: var(--grey-0);
     color: var(--grey-4);
     }
