@@ -10,14 +10,21 @@ import swaggerDocs from "./swagger.json";
 import { contactRoutes } from "./routes/contacts.routes";
 
 export const app: Application = express();
+
+const Origins = [
+    "http://localhost:5173",
+    "http://https://full-stack-project-hgrizz4wa-luckdev22.vercel.app",
+    "http://anotherdomain.com",
+];
+
 app.use(json());
 app.use(
     cors({
-        origin: "http://localhost:5173",
+        origin: Origins,
     })
 );
 app.use("/client", clientRoutes);
 app.use("/login", loginRoutes);
-app.use("/contact", contactRoutes)
+app.use("/contact", contactRoutes);
 app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use(handleErrors);
