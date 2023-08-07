@@ -3,7 +3,7 @@
   "info": {
     "title": "API de criação de clientes e contatos",
     "description": "APi desenvovida por Lucas Macedo Ribeiro para adicionar clientes num banco de dados e cadastrar os seus contatos",
-    "termsOfService": "http://localhost:3000/terms",
+    "termsOfService": "http://localhost:3000/doc",
     "contact": {
       "email": "lukki12@gmail.com"
     },
@@ -14,5 +14,84 @@
       "url": "http://localhost:3000/",
       "description": "Api de Prdução fase inicial"
     }
-  ]
+  ],
+  "paths" : {
+    "/client" : {
+      "post": {
+        "summary": "Cadastro de client",
+        "description": "rota responsavel por cadastrar client para ter total acesso a API",
+        "tags": ["Clients"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema" : {
+                "$ref" : "#/components/schemas/Client"
+              },
+              "examples": {
+                "client":{
+                  "value": {
+                      "name": "Ana",
+                      "email": "ana@example.com",
+                      "telefone": "987654",
+                      "password": "p@ssw0rd",
+                      "admin": true           
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "409": {
+            "description": "Email already exists"
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                    "$ref":"#/components/schemas/Client"
+                  },
+                  "example": {
+                    "admin": false,
+                    "id": "5435567b-c6fe-4ef0-8b5b-96f15dda8a33",
+                    "name": "Rocketseat",
+                    "email": "oi@rocketseat.com.br",
+                    "created_at": "2021-04-11T20:49:40.759Z",
+                    "updated_at": "2021-04-11T20:49:40.759Z"
+                  }
+                }
+              }
+            }
+          }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Client": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "telefone": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "admin": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
 }
