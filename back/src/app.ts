@@ -14,6 +14,7 @@ export const app: Application = express();
 const Origins = [
     "http://localhost:5173",
     "https://full-stack-project-hgrizz4wa-luckdev22.vercel.app",
+    "https://full-stack-project-swart.vercel.app",
 ];
 
 app.use(json());
