@@ -4,7 +4,13 @@ import { StyledCard } from "./style";
 import img from "../../../img/img.png";
 
 export const Card = () => {
-    const { contacts } = useContext(HomeContext);
+    const { contacts, modalUpdate, setModalUpdate, setEditContacts } =
+        useContext(HomeContext);
+
+    const editAndUpdate = (contact: any) => {
+        setEditContacts(contact);
+        setModalUpdate(!modalUpdate);
+    };
 
     return (
         <>
@@ -21,7 +27,9 @@ export const Card = () => {
                             Data de Cadastro:
                             {contact.registrationDate}
                         </h3>
-                        <button>Atualizar</button>
+                        <button onClick={() => editAndUpdate(contact)}>
+                            Edit Contact
+                        </button>
                     </div>
                 </StyledCard>
             ))}

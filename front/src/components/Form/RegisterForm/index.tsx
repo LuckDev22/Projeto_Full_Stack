@@ -1,25 +1,26 @@
 import { StyledForm } from "../../../styles/form";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { IUserRegisterFormValues } from "../../../providers/@types";
+import { IClientRegisterFormValues } from "../../../providers/@types";
 import { useContext } from "react";
-import { UserContext } from "../../../providers/UserProvider";
 import { registerSchema } from "./registerSchema";
 import { Input } from "../Input";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { StyledButton } from "../../../styles/button";
+import { ClientContext } from "../../../providers/UserProvider";
 
 export const RegisterForm = () => {
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<IUserRegisterFormValues>({
+    } = useForm<IClientRegisterFormValues>({
         resolver: zodResolver(registerSchema),
     });
 
-    const { userRegister } = useContext(UserContext);
+    const { clientRegister } = useContext(ClientContext);
 
-    const submit: SubmitHandler<IUserRegisterFormValues> = (formData) => {
-        userRegister(formData);
+    const submit: SubmitHandler<IClientRegisterFormValues> = (formData) => {
+        clientRegister(formData);
     };
 
     return (
@@ -54,7 +55,7 @@ export const RegisterForm = () => {
                 error={errors.password}
                 register={register("confirmPassword")}
             />
-            <button type="submit">Cadastrar</button>
+            <StyledButton type="submit">Cadastrar</StyledButton>
         </StyledForm>
     );
 };

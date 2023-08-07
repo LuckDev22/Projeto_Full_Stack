@@ -1,18 +1,19 @@
 import { StyledForm } from "../../../styles/form";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { IUserRegisterFormValues } from "../../../providers/@types";
+import { IClientRegisterFormValues } from "../../../providers/@types";
 import { useContext } from "react";
 import { Input } from "../Input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { addContactSchema } from "./addContactSchema";
 import { HomeContext } from "../../../providers/HomeProvider";
+import { StyledButton } from "../../../styles/button";
 
 export const AddContactForm = () => {
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<IUserRegisterFormValues>({
+    } = useForm<IClientRegisterFormValues>({
         resolver: zodResolver(addContactSchema),
     });
 
@@ -42,7 +43,7 @@ export const AddContactForm = () => {
                 error={errors.telefone}
                 register={register("telefone")}
             />
-            <button type="submit">Cadastrar</button>
+            <StyledButton type="submit">Cadastrar</StyledButton>
         </StyledForm>
     );
 };

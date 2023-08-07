@@ -1,8 +1,8 @@
 import { StyledList } from "../ProductList/style";
-import { CardUser } from "./CardUser";
+import { CardClient } from "./CardUser";
 
 export const UserList = () => (
     <StyledList>
-        <CardUser />
+        <CardClient />
     </StyledList>
 );

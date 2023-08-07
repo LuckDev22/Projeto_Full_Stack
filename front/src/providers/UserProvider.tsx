@@ -1,33 +1,33 @@
 import { createContext, useEffect, useState } from "react";
 import {
     IDefaultProvidersProps,
-    IUser,
-    IUserContextValues,
-    IUserLoginFormValues,
-    IUserRegisterFormValues,
+    IClient,
+    IClientContextValues,
+    IClientLoginFormValues,
+    IClientRegisterFormValues,
+    IClientUpdate,
 } from "./@types";
 import { useNavigate } from "react-router-dom";
 import { api } from "../services/api";
 import { toast } from "react-toastify";
 
-export const UserContext = createContext({} as IUserContextValues);
+export const ClientContext = createContext({} as IClientContextValues);
 
-export const UserProvider = ({ children }: IDefaultProvidersProps) => {
+export const ClientProvider = ({ children }: IDefaultProvidersProps) => {
     const [loading, setLoading] = useState(true);
-    const [user, setUser] = useState<IUser | null>(null);
+    const [client, setClient] = useState<IClient[]>([]);
+    const [editClient, setEditClient] = useState<IClientUpdate>();
+    const [modalUpdateClient, setModalUpdateClient] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
-        const token = localStorage.getItem("@TOKEN");
-
-        if (token) {
-            api.defaults.headers.common.Authorization = `Bearer ${token}`;
-            return navigate("/dashboard");
-        }
-        localStorage.removeItem("@TOKEN");
+        (async () => {
+            const response = await api.get<IClient[]>("/client");
+            setClient(response.data);
+        })();
     }, []);
 
-    const userLogin = async (formData: IUserLoginFormValues) => {
+    const clientLogin = async (formData: IClientLoginFormValues) => {
         try {
             setLoading(true);
             const response = await api.post("/login", formData);
@@ -38,7 +38,7 @@ export const UserProvider = ({ children }: IDefaultProvidersProps) => {
             localStorage.setItem("@CLIENT", JSON.stringify(client));
             api.defaults.headers.common.Authorization = `Bearer ${token}`;
             navigate("/dashboard");
-            setUser(response.data);
+            setClient(response.data);
             toast.success(`${response.data.client.name}, Bem Vindo ! `);
         } catch (error) {
             toast.error("Usuario ou senha invalido!");
@@ -47,11 +47,11 @@ export const UserProvider = ({ children }: IDefaultProvidersProps) => {
         }
     };
 
-    const userRegister = async (formData: IUserRegisterFormValues) => {
+    const clientRegister = async (formData: IClientRegisterFormValues) => {
         try {
             setLoading(true);
             const response = await api.post("/client", formData);
-            setUser(response.data);
+            setClient(response.data);
             toast.success(`Usuario ${response.data.name}, cadastrado!!`);
             navigate("/");
         } catch (error: any) {
@@ -64,25 +64,63 @@ export const UserProvider = ({ children }: IDefaultProvidersProps) => {
         }
     };
 
-    const userLogout = () => {
-        setUser(null);
-        navigate("/");
+    const updateClient = async (
+        formClientUpdate: IClient,
+        clientId: number
+    ) => {
+        try {
+            const id = Number(clientId);
+            console.log(id);
+            const token = localStorage.getItem("@TOKEN");
+            console.log(token);
+            await api.patch(`/client/${clientId}`, formClientUpdate, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+            });
+            const newClient = client.map((client) => {
+                if (id === client.id) {
+                    return { ...client, ...formClientUpdate };
+                } else {
+                    return client;
+                }
+            });
+            toast.success("Client atualizado com Sucesso!");
+            setClient(newClient);
+            setEditClient(formClientUpdate);
+            setModalUpdateClient(false);
+        } catch (error) {
+            console.log(error);
+            toast.error("Falha ao atualizar Client!");
+        }
+    };
+
+    const clientLogout = () => {
+        setClient([]);
         localStorage.removeItem("@TOKEN");
         localStorage.removeItem("@CLIENT");
+        navigate("/");
     };
 
     return (
-        <UserContext.Provider
+        <ClientContext.Provider
             value={{
                 loading,
                 setLoading,
-                userLogin,
-                user,
-                userRegister,
-                userLogout,
+                clientLogin,
+                client,
+                setClient,
+                clientRegister,
+                clientLogout,
+                updateClient,
+                modalUpdateClient,
+                setModalUpdateClient,
+                editClient,
+                setEditClient,
             }}
         >
             {children}
-        </UserContext.Provider>
+        </ClientContext.Provider>
     );
 };

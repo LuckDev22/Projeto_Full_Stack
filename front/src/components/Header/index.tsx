@@ -4,16 +4,15 @@ import { StyledHeader } from "./style";
 import { StyledContainer } from "../../styles/grid";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { UserContext } from "../../providers/UserProvider";
 import { StyledButton } from "../../styles/button";
+import { ClientContext } from "../../providers/UserProvider";
 
 export const Header = () => {
-    const { userLogout } = useContext(UserContext);
+    const { clientLogout } = useContext(ClientContext);
 
     const clientData = localStorage.getItem("@CLIENT");
     const client = clientData ? JSON.parse(clientData) : null;
-    
-    
+
     return (
         <StyledHeader>
             <StyledContainer>
@@ -34,14 +33,13 @@ export const Header = () => {
                                 <Link to="/all-users">All Users</Link>
                             </li>
                         </ul>
-                        <div className="buttons">
-                            <StyledButton
-                                onClick={() => userLogout()}
-                                type="button"
-                            >
-                                <MdLogout size={28} />
-                            </StyledButton>
-                        </div>
+
+                        <StyledButton
+                            onClick={() => clientLogout()}
+                            type="button"
+                        >
+                            <MdLogout size={28} />
+                        </StyledButton>
                     </nav>
                 </div>
             </StyledContainer>

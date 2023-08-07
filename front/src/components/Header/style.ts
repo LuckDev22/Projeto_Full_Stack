@@ -15,7 +15,7 @@ export const StyledHeader = styled.header`
         }
 
         h2 {
-            color: var(--color-primary)
+            color: var(--color-primary);
         }
         a {
             background-color: var(--color-primary);

@@ -1,9 +1,9 @@
-import { ToastContainer } from "react-toastify";
-import { UserProvider } from "./providers/UserProvider";
-import { AppRoutes } from "./routes/routes";
 import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import { AppRoutes } from "./routes/routes";
 import { GlobalStyles } from "./styles/globalStyles";
 import { HomeProvider } from "./providers/HomeProvider";
+import { ClientProvider } from "./providers/UserProvider";
 
 export const App = () => {
     return (
@@ -21,11 +21,11 @@ export const App = () => {
                 theme="light"
             />
             <GlobalStyles />
-            <HomeProvider>
-                <UserProvider>
+            <ClientProvider>
+                <HomeProvider>
                     <AppRoutes />
-                </UserProvider>
-            </HomeProvider>
+                </HomeProvider>
+            </ClientProvider>
         </>
     );
 };

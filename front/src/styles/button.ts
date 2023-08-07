@@ -16,9 +16,24 @@ export const StyledButton = styled.button`
     background: var();
 
     padding: 0 30px;
-    height: 60px;
 
     :hover {
         opacity: 0.5;
     }
+
+    .btnMini {
+        padding: 0 10px;
+        height: 20px;
+    }
+
+    .btnMedium {
+        padding: 0 20px;
+        height: 40px;
+    }
+
+    .btnLarge {
+        padding: 0 30px;
+        height: 60px;
+    }
 `;
+

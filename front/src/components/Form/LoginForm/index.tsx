@@ -2,9 +2,9 @@ import { useContext } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { LoginData, loginSchema } from "./loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { UserContext } from "../../../providers/UserProvider";
 import { Input } from "../Input";
 import { StyledForm } from "../../../styles/form";
+import { ClientContext } from "../../../providers/UserProvider";
 
 export const LoginForm = () => {
     const {
@@ -15,10 +15,10 @@ export const LoginForm = () => {
         resolver: zodResolver(loginSchema),
     });
 
-    const { userLogin } = useContext(UserContext);
+    const { clientLogin } = useContext(ClientContext);
 
     const submit: SubmitHandler<LoginData> = (formData) => {
-        userLogin(formData);
+        clientLogin(formData);
     };
 
     return (

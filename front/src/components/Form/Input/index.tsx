@@ -1,6 +1,5 @@
-
 import { FieldError, UseFormRegisterReturn } from "react-hook-form";
-import { TextField } from '@mui/material';
+import { StyledTextField } from "../../../styles/form";
 
 interface IInputProps {
     label: string;
@@ -12,7 +11,7 @@ interface IInputProps {
 export const Input = ({ label, type, error, register }: IInputProps) => {
     return (
         <fieldset>
-            <TextField label={label} type={type} {...register} />
+            <StyledTextField label={label} type={type} {...register} />
             {error ? <p>{error.message}</p> : null}
         </fieldset>
     );

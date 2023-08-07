@@ -29,7 +29,7 @@ export const StyledRegisterPage = styled.main`
             }
         }
     }
-
+    
     .flexGrid {
         display: flex;
         align-items: center;
@@ -40,6 +40,28 @@ export const StyledRegisterPage = styled.main`
         .right {
             width: 100%;
         }
+
+        img {
+            max-width: 500px;
+        }
+
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0 20px;
+            height: 60px;
+            :hover {
+                opacity: 0.5;
+            }
+        }
+        
 
         @media (max-width: 750px) {
             .left {

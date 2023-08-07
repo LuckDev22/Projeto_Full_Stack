@@ -13,6 +13,13 @@ export const StyledLoginPage = styled.main`
         justify-content: space-between;
         gap: 50px;
 
+        .userSistem {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            gap: 28px;
+        }
         .left,
         .right {
             width: 100%;
@@ -24,13 +31,23 @@ export const StyledLoginPage = styled.main`
             flex-direction: column;
             gap: 20px;
 
+            form,
+            button,
+            a {
+                width: 100%;
+            }
             p {
                 max-width: 280px;
             }
         }
 
+        img {
+            max-width: 300px;
+        }
+
         button,
         a {
+            
             display: flex;
             justify-content: center;
             align-items: center;
